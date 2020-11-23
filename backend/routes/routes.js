@@ -4,11 +4,11 @@ const router = express.Router();
 const mysqlConnection  = require('../db/db');
 
 router.post('/registro/',(req,res)=>{
-const {nombre,correo,direccion,contraseña,cedula} = req.body;
-let cliente = [nombre,correo,direccion,contraseña,cedula];
+const {nombre,correo,contraseña} = req.body;
+let cliente = [nombre,correo,contraseña];
 
-let nuevoCliente = `INSERT INTO usuario(nombre,correo,direccion,contraseña,cedula)
-                  VALUES(?,?,?,?,?)`;
+let nuevoCliente = `INSERT INTO usuario(nombre,correo,contraseña)
+                  VALUES(?,?,?)`;
 mysqlConnection.query(nuevoCliente, cliente, (err, results, fields) => {
   if (err) {
     return console.error(err.message);
