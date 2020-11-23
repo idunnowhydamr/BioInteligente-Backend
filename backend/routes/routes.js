@@ -36,6 +36,17 @@ router.post('/login/',(req,res)=>{
 
 });
 
+
+router.get('/clientes', (req, res) => {
+     
+  mysqlConnection.query('SELECT * FROM usuario ', (err, rows, fields) => {
+      if (!err) {
+        res.json(rows);
+      } else {
+        console.log(err);
+      }
+    });
+  });
 // router.put('/actor/:id', (req, res) => {
 //   const {nombres,apellidos,correo,documento,telefono_celular,
 //     fecha_nacimiento,institucion_id} = req.body;
