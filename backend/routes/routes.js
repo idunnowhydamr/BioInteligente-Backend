@@ -64,16 +64,16 @@ router.get('/clientes', (req, res) => {
 //   });
 // });
 
-// router.delete('/actor/:id', (req, res) => {
-//   const { id } = req.params;
-//   mysqlConnection.query('DELETE FROM actores WHERE id = ?',
-//    [id], (err, rows, fields) => {
-//     if(!err) {
-//       res.json({status: 'Estudiante eliminado!'});
-//     } else {
-//       console.log(err);
-//     }
-//   });
-// });
+router.delete('/clientes/:id', (req, res) => {
+  const { id } = req.params;
+  mysqlConnection.query('DELETE FROM usuario WHERE id = ?',
+   [id], (err, rows, fields) => {
+    if(!err) {
+      res.json({status: 'Cliente eliminado!'});
+    } else {
+      console.log(err);
+    }
+  });
+});
 
 module.exports = router;
