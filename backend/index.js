@@ -14,6 +14,10 @@ app.set('port',3001);
 // Middlewares
 app.use(express.json());
 
+app.get('/',(req,res)=>{
+  res.send('hi');
+});
+
 // Routes//
 app.use('/api',routes);
 
