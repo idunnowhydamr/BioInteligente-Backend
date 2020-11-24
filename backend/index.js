@@ -4,9 +4,9 @@ const routes = require('./routes/routes');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-app.use(cors())
+app.use(cors({origin: '*'}));
 
-app.use(bodyParser.urlencoded({extended: true}))
+// app.use(bodyParser.urlencoded({extended: true}))
 
 // Ajustes
 app.set('port',process.env.PORT || 3001);
