@@ -36,7 +36,6 @@ router.post('/login/',(req,res)=>{
 
 });
 
-
 router.get('/clientes', (req, res) => {
   mysqlConnection.query('SELECT * FROM usuario ', (err, rows, fields) => {
       if (!err) {
@@ -47,32 +46,20 @@ router.get('/clientes', (req, res) => {
     });
   });
 
- router.get('/:id', (req, res) => {
-  const { id } = req.params;
-    mysqlConnection.query('SELECT * FROM usuario WHERE id_usuario = ?  ', [id], (err, rows, fields) => {
-        if (!err) {
-          res.json(rows);
-        } else {
-          console.log(err);
-        }
-      });
-    });
-  
+// router.put('/cambiocontraseña/:id', (req, res) => {
+//   const {contraseña} = req.body;
+//   const { id } = req.params;
+//   mysqlConnection.query(`UPDATE usuario SET contraseña = ? WHERE id = ?`, 
+//   [contraseña,id], (err, rows, fields) => {
+//     if(!err) {
+//       res.json({status: 'Contraseña actualizada'});
+//     } else {
+//       console.log(err);
+//     }
+//   });
+// });
 
-router.put('/cambiocontraseña/:id', (req, res) => {
-  const {contraseña} = req.body;
-  const { id } = req.params;
-  mysqlConnection.query(`UPDATE usuario SET contraseña = ? WHERE id = ?`, 
-  [contraseña,id], (err, rows, fields) => {
-    if(!err) {
-      res.json({status: 'Contraseña actualizada'});
-    } else {
-      console.log(err);
-    }
-  });
-});
-
-router.delete('/delete/:id', (req, res) => {
+router.delete('/clientes/:id', (req, res) => {
   const { id } = req.params;
   mysqlConnection.query('DELETE FROM usuario WHERE id_usuario = ?',
    [id], (err, rows, fields) => {
