@@ -63,7 +63,7 @@ router.put('/clientes/:id', (req, res) => {
   mysqlConnection.query(`UPDATE usuario SET nombre = ? correo = ? contraseña = ? WHERE id = ?`, 
   [nombre,correo,contraseña,id], (err, rows, fields) => {
     if(!err) {
-      // res.json(rows);
+      res.json(rows);
       res.json({status: 'Perfil actualizado'});
     } else {
       console.log(err);
