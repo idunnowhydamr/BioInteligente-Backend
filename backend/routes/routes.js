@@ -47,6 +47,16 @@ router.get('/clientes', (req, res) => {
       }
     });
   });
+  router.get('/clientes/:id', (req, res) => {
+     
+    mysqlConnection.query('SELECT * FROM usuario ', (err, rows, fields) => {
+        if (!err) {
+          res.json(rows);
+        } else {
+          console.log(err);
+        }
+      });
+    });
 
 router.put('/cambiocontraseña/:id', (req, res) => {
   const {contraseña} = req.body;
