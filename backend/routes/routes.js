@@ -46,15 +46,17 @@ router.get('/clientes', (req, res) => {
     });
   });
 
-  router.get('/clientes/${.id}', (req, res) => {
-    mysqlConnection.query('SELECT * FROM usuario ', (err, rows, fields) => {
-        if (!err) {
-          res.json(rows);
-        } else {
-          console.log(err);
-        }
-      });
+  router.get('/clientes/:id', (req, res) => {
+    const { id } = req.params;
+    mysqlConnection.query('SELECT FROM usuario WHERE id_usuario = ?',
+     [id], (err, rows, fields) => {
+      if(!err) {
+        res.json(rows);
+      } else {
+        console.log(err);
+      }
     });
+  });
 
 // router.put('/cambiocontraseña/:id', (req, res) => {
 //   const {contraseña} = req.body;
