@@ -60,7 +60,7 @@ router.get('/clientes', (req, res) => {
 router.put('/actualizar-contrasena/:id', (req, res) => {
   const {contrasena} = req.body;
   const { id } = req.params;
-  mysqlConnection.query(`UPDATE usuario SET contraseña = ? WHERE id = ?`, 
+  mysqlConnection.query(`UPDATE usuario SET contraseña = ? WHERE usuario.id_usuario = ?`, 
   [contrasena,id], (err, rows, fields) => {
     if(!err) {
       res.json({status: 'Contraseña actualizado'});
