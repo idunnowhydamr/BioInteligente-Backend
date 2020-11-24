@@ -69,6 +69,7 @@ router.put('/actualizar-contrasena/:id', (req, res) => {
     }
   // res.send(contrasena);
 });
+});
 
 router.delete('/clientes/:id', (req, res) => {
   const { id } = req.params;
