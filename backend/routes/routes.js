@@ -47,22 +47,19 @@ router.get('/clientes', (req, res) => {
       }
     });
   });
-// router.put('/actor/:id', (req, res) => {
-//   const {nombres,apellidos,correo,documento,telefono_celular,
-//     fecha_nacimiento,institucion_id} = req.body;
-//   const { id } = req.params;
-//   mysqlConnection.query(`UPDATE actores SET nombres = ?,apellidos = ?,
-//   correo = ?,documento = ?,telefono_celular = ?,fecha_nacimiento = ?,
-//   institucion_id = ? WHERE id = ?`, 
-//   [nombres,apellidos,correo,documento,telefono_celular,fecha_nacimiento,
-//     institucion_id,id], (err, rows, fields) => {
-//     if(!err) {
-//       res.json({status: 'Estudiante actualizado'});
-//     } else {
-//       console.log(err);
-//     }
-//   });
-// });
+
+router.put('/usuario/cambio/contraseña/:id', (req, res) => {
+  const {contraseña} = req.body;
+  const { id } = req.params;
+  mysqlConnection.query(`UPDATE usuario SET contraseña = ? WHERE id = ?`, 
+  [contraseña,id], (err, rows, fields) => {
+    if(!err) {
+      res.json({status: 'Contraseña actualizada'});
+    } else {
+      console.log(err);
+    }
+  });
+});
 
 router.delete('/clientes/:id', (req, res) => {
   const { id } = req.params;
