@@ -33,7 +33,18 @@ router.post('/login/',(req,res)=>{
         res.send({message: `Correo y/o Contraseña incorrecto`})
       }
     });
+});
 
+router.post('/bodega/',(req,res)=>{
+  const {cod_compra,nombre_producto, costo, id_usuario, cod_producto } = req.body;
+  let almacenamiento = [cod_compra,nombre_producto, costo, id_usuario, cod_producto];
+  let almabodega = `INSERT INTO producto(cod_compra,nombre_producto, costo, id_usuario, cod_producto)VALUES(?,?,?)`;
+  mysqlConnection.query(almabodega, almacenamiento, (err, results, fields) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    res.json({ message:`Producto Registrado y almacenado con Exito!`, })
+    });
 });
 
 router.get('/clientes', (req, res) => {
