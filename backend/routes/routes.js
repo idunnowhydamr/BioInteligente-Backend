@@ -48,7 +48,7 @@ router.get('/clientes', (req, res) => {
     });
   });
   
-router.get('/:id', (req, res) => {
+router.get('/usuario/:id', (req, res) => {
   const { id } = req.params;
   mysqlConnection.query('SELECT * FROM usuario WHERE id_usuario = ?',
    [id], (err, rows, fields) => {
