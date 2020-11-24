@@ -57,18 +57,19 @@ router.get('/clientes', (req, res) => {
       });
     });
 
-// router.put('/cambiocontraseña/:id', (req, res) => {
-//   const {contraseña} = req.body;
-//   const { id } = req.params;
-//   mysqlConnection.query(`UPDATE usuario SET contraseña = ? WHERE id = ?`, 
-//   [contraseña,id], (err, rows, fields) => {
-//     if(!err) {
-//       res.json({status: 'Contraseña actualizada'});
-//     } else {
-//       console.log(err);
-//     }
-//   });
-// });
+router.put('/clientes/:id', (req, res) => {
+  const {nombre,correo,contraseña} = req.body;
+  const { id } = req.params;
+  mysqlConnection.query(`UPDATE usuario SET nombre = ? correo = ? contraseña = ? WHERE id = ?`, 
+  [nombre,correo,contraseña,id], (err, rows, fields) => {
+    if(!err) {
+      res.json(rows);
+      res.json({status: 'Perfil actualizado'});
+    } else {
+      console.log(err);
+    }
+  });
+});
 
 router.delete('/clientes/:id', (req, res) => {
   const { id } = req.params;
