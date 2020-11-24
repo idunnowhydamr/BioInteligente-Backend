@@ -57,7 +57,7 @@ router.get('/clientes', (req, res) => {
       });
     });
 
-router.put('/perfil/:id', (req, res) => {
+router.put('/clientes/:id', (req, res) => {
   const {nombre,correo,contraseña} = req.body;
   const { id } = req.params;
   mysqlConnection.query(`UPDATE usuario SET nombre = ? correo = ? contraseña = ? WHERE id = ?`, 
