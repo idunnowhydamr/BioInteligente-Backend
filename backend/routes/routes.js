@@ -47,8 +47,8 @@ router.get('/clientes', (req, res) => {
     });
   });
 
- router.get('/clientes/:id', (req, res) => {
-    mysqlConnection.query('SELECT * FROM usuario  ', (err, rows, fields) => {
+ router.get(':id', (req, res) => {
+    mysqlConnection.query('SELECT * FROM usuario WHERE id_usuario = ?  ', (err, rows, fields) => {
         if (!err) {
           res.json(rows);
         } else {
@@ -71,7 +71,7 @@ router.put('/cambiocontraseña/:id', (req, res) => {
   });
 });
 
-router.delete('/clientes/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
   const { id } = req.params;
   mysqlConnection.query('DELETE FROM usuario WHERE id_usuario = ?',
    [id], (err, rows, fields) => {
