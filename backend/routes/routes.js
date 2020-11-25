@@ -56,6 +56,17 @@ router.get('/bodega', (req, res) => {
       }
     });
   });
+  
+  router.get('/bodega/:cod_producto', (req, res) => {
+    const { cod_producto } = req.params;
+    mysqlConnection.query('SELECT * FROM usuario WHERE cod_producto = ? ',[cod_producto], (err, rows, fields) => {
+        if (!err) {
+          res.json(rows);
+        } else {
+          console.log(err);
+        }
+      });
+    });
 
 
 router.get('/clientes', (req, res) => {
