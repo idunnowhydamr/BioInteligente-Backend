@@ -4,6 +4,9 @@ const routes = require('./routes/routes');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
+
+
+
 app.use(cors());
 
 // app.use(bodyParser.urlencoded({extended: true}))
@@ -20,6 +23,7 @@ app.get('/',(req,res)=>{
 
 // Routes//
 app.use('/api',routes);
+
 
 // Ajustes del servidor
 app.listen(app.get('port'), () => {

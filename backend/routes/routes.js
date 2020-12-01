@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const mysqlConnection  = require('../db/db');
+const mysqlConnection  = newFunction();
 
 router.post('/registro/',(req,res)=>{
 const {nombre,correo,contraseña} = req.body;
@@ -117,3 +117,7 @@ router.delete('/clientes/:id', (req, res) => {
 });
 
 module.exports = router;
+
+function newFunction() {
+  return require('../db/db');
+}
