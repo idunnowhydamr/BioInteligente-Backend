@@ -4,11 +4,6 @@ const routes = require('./routes/routes');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-
-
-
-app.use(cors());
-
 // app.use(bodyParser.urlencoded({extended: true}))
 
 // Ajustes
@@ -16,6 +11,7 @@ app.set('port',process.env.PORT || 3001);
 
 // Middlewares
 app.use(express.json());
+app.use(cors({origin: '*'}));
 
 app.get('/',(req,res)=>{
   res.send('hi');
@@ -23,7 +19,6 @@ app.get('/',(req,res)=>{
 
 // Routes//
 app.use('/api',routes);
-
 
 // Ajustes del servidor
 app.listen(app.get('port'), () => {
