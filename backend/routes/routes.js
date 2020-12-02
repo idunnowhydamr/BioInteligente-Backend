@@ -18,14 +18,14 @@ router.post('/compra1/',(req,res)=>{
 
   router.get('/compra1/:cod_compra', (req, res) => {
     const { cod_compra } = req.params;
-    mysqlConnection.query('SELECT * FROM compra WHERE cod_compra = ? ',[cod_compra], (err, rows, fields) => {
-        if (!err) {
-          res.json(rows);
-        } else {
-          console.log(err);
-        }
-      });
-    }); 
+ mysqlConnection.query('SELECT * FROM compra WHERE cod_compra = ?',[cod_compra], (err, rows, fields) => {
+     if (!err) {
+       res.json(rows[0]);
+     } else {
+       console.log(err);
+     }
+   });
+ });
     
     router.get('/compra1', (req, res) => {
       mysqlConnection.query('SELECT * FROM compra ', (err, rows, fields) => {
@@ -116,7 +116,7 @@ router.get('/clientes', (req, res) => {
     const { id } = req.params;
     mysqlConnection.query('SELECT * FROM usuario WHERE id_usuario = ? ',[id], (err, rows, fields) => {
         if (!err) {
-          res.json(rows);
+          res.json(rows[0]);
         } else {
           console.log(err);
         }
